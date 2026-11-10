@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Request a personal tarot, oracle or spiritual reading from The Wyrnmere Moon.">
+  <title>Book a Reading | The Wyrnmere Moon</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 0;
+      background: #090b20;
+      color: #eee9ff;
+      font-family: Georgia, serif;
+      line-height: 1.7;
+    }
+    header {
+      background: #11132e;
+      text-align: center;
+      padding: 24px 15px;
+      border-bottom: 1px solid #7770a9;
+    }
+    header h1 { color: #c7b8ff; letter-spacing: 3px; }
+    nav a {
+      color: #ddd3ff;
+      margin: 0 9px;
+      text-decoration: none;
+    }
+    main {
+      max-width: 700px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+    h2 {
+      color: #c8b5ff;
+      text-align: center;
+    }
+    .intro { text-align: center; }
+    form {
+      background: #171936;
+      border: 1px solid #565080;
+      border-radius: 15px;
+      padding: 25px;
+      margin-top: 25px;
+    }
+    label {
+      display: block;
+      margin-top: 16px;
+      color: #d4c4ff;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      border: 1px solid #7770a9;
+      border-radius: 7px;
+      background: #0d1028;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    textarea { min-height: 110px; resize: vertical; }
+    button {
+      width: 100%;
+      margin-top: 22px;
+      padding: 14px;
+      border: none;
+      border-radius: 25px;
+      background: #7663a8;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover { background: #927fc5; }
+    .note {
+      color: #bdb5d8;
+      font-size: 13px;
+      margin-top: 15px;
+    }
+    footer {
+      text-align: center;
+      padding: 22px;
+      color: #aaa2c8;
+      border-top: 1px solid #494269;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>☾ The Wyrnmere Moon ☽</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">Our Story</a>
+      <a href="services.html">Readings</a>
+      <a href="booking.html">Booking</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Request Your Reading</h2>
+    <p class="intro">
+      Your journey deserves time, care and intention.
+      Tell me a little about the guidance you're seeking.
+    </p>
+
+    <form action="mailto:YOUR-EMAIL-HERE"
+          method="post"
+          enctype="text/plain">
+
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="Name" required>
+
+      <label for="email">Your Email</label>
+      <input type="email" id="email" name="Email" required>
+
+      <label for="reading">Choose Your Reading</label>
+      <select id="reading" name="Reading" required>
+        <option value="">Select a service</option>
+        <option>Tarot Reading</option>
+        <option>Oracle Reading</option>
+        <option>Palmistry</option>
+        <option>Spiritual Guidance</option>
+        <option>Empathic Support</option>
+      </select>
+
+      <label for="date">Preferred Date</label>
+      <input type="date" id="date" name="Preferred Date">
+
+      <label for="focus">What Would You Like Guidance About?</label>
+      <textarea id="focus" name="Reading Focus"
+        placeholder="Share only what you're comfortable sharing."></textarea>
+
+      <label for="contact">Preferred Contact Method</label>
+      <select id="contact" name="Contact Method">
+        <option>Email</option>
+        <option>Phone</option>
+        <option>Message</option>
+      </select>
+
+      <button type="submit">Send Reading Request ☾</button>
+
+      <p class="note">
+        Submitting this request does not confirm an appointment.
+        Your reading will need to be arranged and confirmed separately.
+      </p>
+    </form>
+  </main>
+
+  <footer>
+    ☾ The Wyrnmere Moon · 2026 ☽
+  </footer>
+</body>
+</html>
