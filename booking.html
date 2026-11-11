@@ -2,153 +2,261 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Request a personal tarot, oracle or spiritual reading from The Wyrnmere Moon.">
-  <title>Book a Reading | The Wyrnmere Moon</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      padding: 0;
-      background: #090b20;
-      color: #eee9ff;
-      font-family: Georgia, serif;
-      line-height: 1.7;
-    }
-    header {
-      background: #11132e;
-      text-align: center;
-      padding: 24px 15px;
-      border-bottom: 1px solid #7770a9;
-    }
-    header h1 { color: #c7b8ff; letter-spacing: 3px; }
-    nav a {
-      color: #ddd3ff;
-      margin: 0 9px;
-      text-decoration: none;
-    }
-    main {
-      max-width: 700px;
-      margin: auto;
-      padding: 30px 20px;
-    }
-    h2 {
-      color: #c8b5ff;
-      text-align: center;
-    }
-    .intro { text-align: center; }
-    form {
-      background: #171936;
-      border: 1px solid #565080;
-      border-radius: 15px;
-      padding: 25px;
-      margin-top: 25px;
-    }
-    label {
-      display: block;
-      margin-top: 16px;
-      color: #d4c4ff;
-    }
-    input, select, textarea {
-      width: 100%;
-      padding: 12px;
-      margin-top: 6px;
-      border: 1px solid #7770a9;
-      border-radius: 7px;
-      background: #0d1028;
-      color: white;
-      font-family: Arial, sans-serif;
-    }
-    textarea { min-height: 110px; resize: vertical; }
-    button {
-      width: 100%;
-      margin-top: 22px;
-      padding: 14px;
-      border: none;
-      border-radius: 25px;
-      background: #7663a8;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    button:hover { background: #927fc5; }
-    .note {
-      color: #bdb5d8;
-      font-size: 13px;
-      margin-top: 15px;
-    }
-    footer {
-      text-align: center;
-      padding: 22px;
-      color: #aaa2c8;
-      border-top: 1px solid #494269;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>☾ The Wyrnmere Moon ☽</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">Our Story</a>
-      <a href="services.html">Readings</a>
-      <a href="booking.html">Booking</a>
-    </nav>
-  </header>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10182c">
+<title>Book a Reading | The Wyrnmere Moon</title>
 
-  <main>
-    <h2>Request Your Reading</h2>
+<style>
+:root {
+  --silver: #d9dce8;
+  --silver-light: #f4f3fa;
+  --blue: #10182c;
+  --purple: #65439a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--blue);
+  color: var(--silver-light);
+  font-family: Georgia, serif;
+  line-height: 1.7;
+}
+
+header {
+  background: linear-gradient(120deg,#e4e5ed,#aeb8d1,#e9e8f0);
+  color: #18223b;
+  text-align: center;
+  padding: 35px 15px;
+}
+
+header .moon {
+  font-size: 48px;
+  color: var(--purple);
+}
+
+header h1 {
+  font-size: clamp(30px,6vw,46px);
+  letter-spacing: 3px;
+}
+
+header p {
+  font-style: italic;
+  letter-spacing: 2px;
+}
+
+nav {
+  background: #111b34;
+  border-block: 1px solid var(--silver);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 15px;
+}
+
+nav a {
+  color: var(--silver);
+  text-decoration: none;
+  padding: 8px 14px;
+}
+
+nav a:hover {
+  background: var(--purple);
+  color: white;
+  border-radius: 20px;
+}
+
+.hero {
+  text-align: center;
+  padding: 65px 20px;
+  background:
+    radial-gradient(ellipse at top,#57447e,transparent 65%),
+    linear-gradient(145deg,#10182c,#263653);
+}
+
+.hero .symbol {
+  font-size: 50px;
+  color: var(--silver);
+  text-shadow: 0 0 20px #d9dce8;
+}
+
+.hero h2 {
+  font-size: clamp(32px,6vw,46px);
+}
+
+.hero p {
+  max-width: 650px;
+  margin: 12px auto 0;
+  color: #deddeb;
+}
+
+main {
+  max-width: 760px;
+  margin: auto;
+  padding: 45px 20px 70px;
+}
+
+.form-card {
+  background: linear-gradient(145deg,#263653,#30234b);
+  border: 1px solid #c4c9dc;
+  border-radius: 18px;
+  padding: 30px;
+  box-shadow: 0 8px 30px #0005;
+}
+
+.form-card h3 {
+  text-align: center;
+  color: var(--silver);
+  font-size: 27px;
+  margin-bottom: 10px;
+}
+
+.form-card .intro {
+  text-align: center;
+  color: #deddeb;
+  margin-bottom: 25px;
+}
+
+label {
+  display: block;
+  color: var(--silver-light);
+  margin: 16px 0 6px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #bfc5d9;
+  border-radius: 9px;
+  background: #f4f3fa;
+  color: #17213a;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+button {
+  width: 100%;
+  margin-top: 25px;
+  padding: 15px;
+  border: 1px solid white;
+  border-radius: 30px;
+  background: linear-gradient(135deg,#f0eff6,#abb7d2);
+  color: #17213a;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--purple);
+  color: white;
+}
+
+.note {
+  text-align: center;
+  color: #d9dce8;
+  margin-top: 25px;
+  font-size: 14px;
+}
+
+footer {
+  background: #090f20;
+  border-top: 1px solid var(--silver);
+  text-align: center;
+  padding: 30px 15px;
+  color: var(--silver);
+}
+
+@media(max-width:600px) {
+  nav { gap: 3px; }
+  nav a { padding: 8px; font-size: 14px; }
+  .form-card { padding: 22px 17px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="moon">☾</div>
+  <h1>The Wyrnmere Moon</h1>
+  <p>Intuition • Wisdom • Spiritual Discovery</p>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="services.html">Readings</a>
+  <a href="booking.html">Booking</a>
+</nav>
+
+<div class="hero">
+  <div class="symbol">✧ ☾ ✧</div>
+  <h2>Book Your Reading</h2>
+  <p>
+    Take a moment for yourself. Share what you're looking for
+    and begin your journey with The Wyrnmere Moon.
+  </p>
+</div>
+
+<main>
+  <div class="form-card">
+    <h3>Request a Reading</h3>
     <p class="intro">
-      Your journey deserves time, care and intention.
-      Tell me a little about the guidance you're seeking.
+      Complete the details below to prepare your booking request.
     </p>
 
-    <form action="mailto:YOUR-EMAIL-HERE"
-          method="post"
+    <form action="mailto:YOUR-EMAIL-HERE" method="post"
           enctype="text/plain">
 
       <label for="name">Your Name</label>
-      <input type="text" id="name" name="Name" required>
+      <input type="text" id="name" name="Name"
+             placeholder="Enter your name" required>
 
-      <label for="email">Your Email</label>
-      <input type="email" id="email" name="Email" required>
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="Email"
+             placeholder="Enter your email" required>
 
-      <label for="reading">Choose Your Reading</label>
-      <select id="reading" name="Reading" required>
+      <label for="service">Choose Your Reading</label>
+      <select id="service" name="Reading" required>
         <option value="">Select a service</option>
         <option>Tarot Reading</option>
         <option>Oracle Reading</option>
         <option>Palmistry</option>
         <option>Spiritual Guidance</option>
         <option>Empathic Support</option>
+        <option>Intuitive Insight</option>
       </select>
 
       <label for="date">Preferred Date</label>
-      <input type="date" id="date" name="Preferred Date">
+      <input type="date" id="date" name="Preferred Date" required>
 
-      <label for="focus">What Would You Like Guidance About?</label>
-      <textarea id="focus" name="Reading Focus"
-        placeholder="Share only what you're comfortable sharing."></textarea>
+      <label for="message">What Would You Like Guidance On?</label>
+      <textarea id="message" name="Message"
+        placeholder="Share anything you'd like me to know..."></textarea>
 
-      <label for="contact">Preferred Contact Method</label>
-      <select id="contact" name="Contact Method">
-        <option>Email</option>
-        <option>Phone</option>
-        <option>Message</option>
-      </select>
-
-      <button type="submit">Send Reading Request ☾</button>
-
-      <p class="note">
-        Submitting this request does not confirm an appointment.
-        Your reading will need to be arranged and confirmed separately.
-      </p>
+      <button type="submit">Submit Booking Request ☾</button>
     </form>
-  </main>
 
-  <footer>
-    ☾ The Wyrnmere Moon · 2026 ☽
-  </footer>
+    <p class="note">
+      Your information is treated with care and respect.
+      Booking requests are subject to confirmation.
+    </p>
+  </div>
+</main>
+
+<footer>
+  <p>☾ The Wyrnmere Moon ☽</p>
+  <p>Intuition • Wisdom • Spiritual Discovery</p>
+  <p>© 2026 The Wyrnmere Moon. All rights reserved.</p>
+</footer>
+
 </body>
 </html>
