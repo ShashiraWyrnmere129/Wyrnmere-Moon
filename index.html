@@ -4,138 +4,204 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10182c">
+<title>The Wyrnmere Moon | Tarot & Spiritual Guidance</title>
 <meta name="description" content="Discover tarot, oracle readings, palmistry and spiritual guidance at The Wyrnmere Moon.">
-<title>The Wyrnmere Moon | Intuition Meets Moonlight</title>
 
 <style>
-* { box-sizing: border-box; }
+:root {
+  --silver: #d9dce8;
+  --silver-light: #f4f3fa;
+  --blue: #10182c;
+  --blue-light: #263b64;
+  --purple: #65439a;
+  --purple-light: #a58bd0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
 
 body {
-  margin: 0;
-  background: #080b20;
-  color: #eeeaff;
+  background: var(--blue);
+  color: var(--silver-light);
   font-family: Georgia, serif;
   line-height: 1.7;
 }
 
 header {
+  background: linear-gradient(120deg, #e4e5ed, #aeb8d1, #e9e8f0);
+  color: #18223b;
   text-align: center;
-  padding: 20px;
-  background: #11152e;
-  border-bottom: 1px solid #7770a9;
+  padding: 35px 20px;
 }
 
-.logo-space {
-  width: 150px;
-  height: 150px;
-  border: 1px solid #8275b9;
-  border-radius: 50%;
-  margin: 0 auto 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #c8b5ff;
-  font-size: 42px;
+.logo {
+  font-size: 54px;
+  color: #65439a;
+  margin-bottom: 5px;
 }
 
 header h1 {
-  color: #d1c2ff;
+  font-size: clamp(30px, 6vw, 48px);
   letter-spacing: 3px;
-  margin: 8px 0;
+}
+
+header p {
+  font-style: italic;
+  letter-spacing: 2px;
 }
 
 nav {
-  margin-top: 18px;
+  background: #111b34;
+  border-top: 1px solid #bfc5d9;
+  border-bottom: 1px solid #bfc5d9;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 15px;
 }
 
 nav a {
-  display: inline-block;
-  color: #e2d9ff;
+  color: var(--silver);
   text-decoration: none;
-  margin: 6px 10px;
+  padding: 8px 14px;
+  transition: .3s;
 }
 
-nav a:hover { color: #a99aff; }
+nav a:hover {
+  color: white;
+  background: var(--purple);
+  border-radius: 20px;
+}
 
 .hero {
-  min-height: 460px;
-  padding: 95px 20px;
+  min-height: 470px;
+  padding: 100px 20px;
   text-align: center;
   background:
-    radial-gradient(ellipse at center, #29204f 0%, #10142e 48%, #080b20 100%);
+    radial-gradient(ellipse at top, #57447e 0%, transparent 55%),
+    linear-gradient(145deg, #10182c, #202d4d 60%, #30214d);
+}
+
+.hero .moon {
+  font-size: 65px;
+  color: var(--silver-light);
+  text-shadow: 0 0 25px #d9dce8;
 }
 
 .hero h2 {
-  color: #e0d5ff;
-  font-size: clamp(30px, 6vw, 48px);
-  letter-spacing: 2px;
+  font-size: clamp(34px, 7vw, 55px);
+  color: var(--silver-light);
+  margin: 15px 0;
 }
 
 .hero p {
   max-width: 650px;
-  margin: 15px auto;
-  color: #d0c8e9;
-  font-size: 18px;
+  margin: 0 auto 28px;
+  font-size: 19px;
+  color: #d8d8eb;
 }
 
 .button {
   display: inline-block;
-  margin-top: 22px;
-  padding: 13px 27px;
-  border: 1px solid #b4a3ed;
+  padding: 12px 27px;
+  background: linear-gradient(135deg, #f0eff6, #abb7d2);
+  color: #17213a;
+  border: 1px solid white;
   border-radius: 30px;
-  color: white;
-  background: #55447f;
   text-decoration: none;
+  font-weight: bold;
+  transition: .3s;
 }
 
-.button:hover { background: #7461a6; }
+.button:hover {
+  background: var(--purple);
+  color: white;
+  transform: translateY(-2px);
+}
 
 section {
-  max-width: 950px;
+  padding: 65px 22px;
+  max-width: 1100px;
   margin: auto;
-  padding: 55px 22px;
 }
 
-h2.section-title {
-  color: #cbbcff;
+section h2 {
+  color: var(--silver);
+  font-size: 34px;
   text-align: center;
-  font-size: 30px;
+  margin-bottom: 20px;
 }
 
-.about-text {
-  max-width: 760px;
-  margin: auto;
+.intro {
   text-align: center;
+  max-width: 780px;
+  margin: auto;
+  color: #e1e2ed;
 }
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+  margin-top: 35px;
 }
 
 .card {
-  padding: 24px;
+  background: linear-gradient(145deg, #263653, #30234b);
+  border: 1px solid #bfc5d9;
+  border-radius: 15px;
+  padding: 28px 22px;
   text-align: center;
-  background: #171b3a;
-  border: 1px solid #565080;
-  border-radius: 14px;
+  box-shadow: 0 8px 25px #0005;
 }
 
-.card h3 { color: #d1c2ff; }
+.card .symbol {
+  font-size: 35px;
+  color: var(--silver);
+}
+
+.card h3 {
+  color: #e5e4ef;
+  margin: 10px 0;
+}
+
+.card p {
+  color: #d4d5e4;
+}
+
+.callout {
+  background: linear-gradient(120deg, #dfe1eb, #aab5d0, #e6e4ef);
+  color: #18213a;
+  text-align: center;
+  padding: 55px 20px;
+  margin-top: 25px;
+}
+
+.callout h2 {
+  color: #26304b;
+}
 
 footer {
-  padding: 30px 15px;
   text-align: center;
-  color: #aaa2c8;
-  background: #10132b;
-  border-top: 1px solid #494269;
+  padding: 30px 15px;
+  background: #090f20;
+  border-top: 1px solid #aeb8d1;
+  color: #d9dce8;
 }
 
-footer a {
-  color: #cbbcff;
-  margin: 0 8px;
+footer p { margin: 5px; }
+
+@media(max-width: 600px) {
+  nav { gap: 3px; }
+  nav a { padding: 8px; font-size: 14px; }
+  .hero { padding: 75px 18px; }
 }
 </style>
 </head>
@@ -143,92 +209,79 @@ footer a {
 <body>
 
 <header>
-  <div class="logo-space" aria-label="Logo placeholder">☾</div>
-  <h1>THE WYRNMERE MOON</h1>
-  <p>Intuition • Reflection • Spiritual Guidance</p>
-
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">Our Story</a>
-    <a href="services.html">Readings</a>
-    <a href="booking.html">Book a Reading</a>
-  </nav>
+  <div class="logo">☾</div>
+  <h1>The Wyrnmere Moon</h1>
+  <p>Intuition • Wisdom • Spiritual Discovery</p>
 </header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="services.html">Readings</a>
+  <a href="booking.html">Booking</a>
+</nav>
 
 <main>
   <div class="hero">
-    <p>☾ Welcome to The Wyrnmere Moon ☽</p>
-    <h2>Where Intuition Meets the Moonlight</h2>
+    <div class="moon">☾</div>
+    <h2>Find Your Light in the Moonlight</h2>
     <p>
-      A place for reflection, spiritual exploration,
-      personal insight and discovering the strength
-      already within you.
+      A sanctuary for spiritual exploration, intuitive insight,
+      and discovering the wisdom already within you.
     </p>
-    <a class="button" href="booking.html">Begin Your Journey</a>
+    <a class="button" href="services.html">Explore Our Readings</a>
   </div>
 
   <section>
-    <h2 class="section-title">A Little About Us</h2>
-    <div class="about-text">
-      <p>
-        The Wyrnmere Moon was created from a lifelong passion
-        for spirituality, intuition and helping others find
-        clarity along their journey.
-      </p>
-      <p>
-        With over 20 years of experience exploring tarot,
-        oracle readings, palmistry and spiritual practices,
-        I offer a welcoming space for reflection and growth.
-      </p>
-      <a class="button" href="about.html">Discover Our Story</a>
-    </div>
+    <h2>Welcome to The Wyrnmere Moon</h2>
+    <p class="intro">
+      Step into a space where intuition meets reflection.
+      Through tarot, oracle readings, palmistry, and spiritual
+      guidance, discover new perspectives and reconnect with
+      your inner strength.
+    </p>
   </section>
 
   <section>
-    <h2 class="section-title">Explore Our Services</h2>
-
+    <h2>Explore Your Path</h2>
     <div class="cards">
       <div class="card">
-        <h3>☾ Tarot Readings</h3>
-        <p>Explore questions, possibilities and personal insight.</p>
+        <div class="symbol">✧</div>
+        <h3>Tarot Readings</h3>
+        <p>Explore life's questions through the symbolism and wisdom of tarot.</p>
       </div>
 
       <div class="card">
-        <h3>🔮 Oracle Readings</h3>
-        <p>Discover reflective messages and spiritual perspectives.</p>
+        <div class="symbol">☽</div>
+        <h3>Oracle Readings</h3>
+        <p>Find inspiration, reflection, and fresh perspectives.</p>
       </div>
 
       <div class="card">
-        <h3>✋ Palmistry</h3>
-        <p>Explore the traditional symbolism of your palms.</p>
+        <div class="symbol">✋</div>
+        <h3>Palmistry</h3>
+        <p>Explore the traditional art of palm reading and its symbolism.</p>
       </div>
 
       <div class="card">
-        <h3>🌙 Spiritual Guidance</h3>
-        <p>Make space for intuition, reflection and growth.</p>
+        <div class="symbol">❖</div>
+        <h3>Spiritual Guidance</h3>
+        <p>A welcoming space for reflection, self-discovery, and personal growth.</p>
       </div>
-    </div>
-
-    <div style="text-align:center">
-      <a class="button" href="services.html">View All Services</a>
     </div>
   </section>
 
-  <section style="text-align:center">
-    <h2 class="section-title">Your Journey. Your Choices. Your Light.</h2>
-    <p>Sometimes a little perspective can illuminate a new path.</p>
-    <a class="button" href="booking.html">Request a Reading</a>
-  </section>
+  <div class="callout">
+    <h2>Your Journey Begins Here</h2>
+    <p>Whenever you are ready, the moonlight is waiting.</p>
+    <br>
+    <a class="button" href="booking.html">Explore Booking</a>
+  </div>
 </main>
 
 <footer>
-  <p>☾ THE WYRNMERE MOON ☽</p>
-  <p>Intuition • Reflection • Spiritual Guidance</p>
-  <p>
-    <a href="about.html">Our Story</a>
-    <a href="services.html">Services</a>
-    <a href="booking.html">Booking</a>
-  </p>
+  <p>☾ The Wyrnmere Moon ☽</p>
+  <p>Intuition • Wisdom • Spiritual Discovery</p>
   <p>© 2026 The Wyrnmere Moon. All rights reserved.</p>
 </footer>
 
