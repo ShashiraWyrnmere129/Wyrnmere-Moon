@@ -1,70 +1,100 @@
 
-export const products = [
-  {
-    id: "moon-journal",
-    slug: "moon-journal",
-    name: "Moon Journal",
-    category: "Ritual Tools",
-    price: 18,
-    description: "A beautiful space for moon notes, intentions, dreams and reflections.",
-    image: "/images/moon-journal.jpg",
-    featured: true,
-    available: true,
-  },
-  {
-    id: "tarot-reading",
-    slug: "tarot-reading",
-    name: "Intuitive Tarot Reading",
-    category: "Readings",
-    price: 35,
-    description: "A personal tarot reading exploring the questions and themes on your mind.",
-    image: "/images/tarot-reading.jpg",
-    featured: true,
-    available: true,
-  },
-  {
-    id: "moon-candle",
-    slug: "moon-candle",
-    name: "Moonlight Candle",
-    category: "Ritual Tools",
-    price: 16,
-    description: "A candle for reflection, intention setting and your sacred space.",
-    image: "/images/moon-candle.jpg",
-    featured: false,
-    available: true,
-  },
-  {
-    id: "oracle-reading",
-    slug: "oracle-reading",
-    name: "Oracle Card Reading",
-    category: "Readings",
-    price: 28,
-    description: "An oracle reading for reflection, perspective and clarity.",
-    image: "/images/oracle-reading.jpg",
-    featured: false,
-    available: true,
-  },
-  {
-    id: "palm-reading",
-    slug: "palm-reading",
-    name: "Palm Reading",
-    category: "Readings",
-    price: 30,
-    description: "A personalized palm reading exploring the lines and features of your hand.",
-    image: "/images/palm-reading.jpg",
-    featured: false,
-    available: true,
-  },
-  {
-    id: "spiritual-guidance",
-    slug: "spiritual-guidance",
-    name: "Spiritual Guidance",
-    category: "Readings",
-    price: 40,
-    description: "A supportive intuitive session for reflection and direction.",
-    image: "/images/spiritual-guidance.jpg",
-    featured: false,
-    available: true,
-  },
-];
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 
+const CartContext = createContext(null);
+const STORAGE_KEY = "wyrnmere-moon-cart";
+
+export function CartProvider({ children }) {
+  const [items, setItems] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+    } catch {
+      return [];
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+  }, [items]);
+
+  function addToCart(product) {
+    setItems((current) => {
+      const existing = current.find((item) => item.id === product.id);
+
+      if (existing) {
+        return current.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      }
+
+      return [...current, { ...product, quantity: 1 }];
+    });
+  }
+
+  function updateQuantity(id, quantity) {
+    setItems((current) =>
+      quantity <= 0
+        ? current.filter((item) => item.id !== id)
+        : current.map((item) =>
+            item.id === id ? { ...item, quantity } : item
+          )
+    );
+  }
+
+  function removeFromCart(id) {
+    setItems((current) => current.filter((item) => item.id !== id));
+  }
+
+  function clearCart() {
+    setItems([]);
+  }
+
+  const count = items.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+
+  const subtotal = items.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
+
+  const value = useMemo(
+    () => ({
+      items,
+      addToCart,
+      updateQuantity,
+      removeFromCart,
+      clearCart,
+      count,
+      subtotal,
+    }),
+    [items, count, subtotal]
+  );
+
+  return (
+    <CartContext.Provider value={value}>
+      {children}
+    </CartContext.Provider>
+  );
+}
+
+export function useCart() {
+  const context = useContext(CartContext);
+
+  if (!context) {
+    throw new Error(
+      "useCart must be used inside CartProvider"
+    );
+  }
+
+  return context;
+}
