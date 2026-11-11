@@ -1,1 +1,283 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090914">
+<title>Moonlit Shop | The Wyrnmere Moon</title>
+<style>
+:root {
+  --night:#090914;
+  --panel:#17152a;
+  --purple:#9273c5;
+  --blue:#536f9f;
+  --silver:#e3e2ee;
+  --muted:#bcb5ce;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--night);color:var(--silver);
+  font-family:Georgia,serif;line-height:1.6;
+}
+header{
+  text-align:center;padding:35px 15px 25px;
+  background:linear-gradient(135deg,#25203d,#10182c,#301c3c);
+}
+.logo{font-size:42px;color:#d9c5ff}
+header h1{font-size:clamp(30px,6vw,48px);margin:0}
+header p{color:#d0c5e4;font-style:italic}
+nav{
+  display:flex;justify-content:center;flex-wrap:wrap;
+  gap:10px;padding:14px;background:#111326;
+  border-block:1px solid #51476c;
+}
+nav a{color:var(--silver);text-decoration:none;padding:7px 12px}
+nav a:hover{color:#c8aaff}
+.hero{text-align:center;padding:65px 18px 40px}
+.hero .moon{font-size:55px;color:#cbb7f0}
+.hero h2{font-size:clamp(35px,7vw,55px);margin:5px}
+.hero p{color:var(--muted)}
+main{max-width:1150px;margin:auto;padding:15px 20px 70px}
+.controls{display:flex;gap:12px;flex-wrap:wrap;justify-content:space-between;margin:25px 0}
+input,select{
+  padding:12px 15px;border:1px solid #55456e;
+  border-radius:25px;background:#17152a;color:white;
+  font-size:15px;
+}
+#search{flex:1;min-width:180px}
+.categories{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}
+.categories button,.add,.checkout,.clear{
+  border:1px solid #8d76b5;border-radius:25px;
+  padding:10px 16px;cursor:pointer;
+  background:linear-gradient(120deg,#604a88,#405b83);
+  color:white;font-weight:bold;
+}
+.categories button.active{background:#a084d0;color:#100d1d}
+.grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:22px;
+}
+.product{
+  background:linear-gradient(145deg,#211c37,#12172b);
+  border:1px solid #574a70;border-radius:17px;overflow:hidden;
+}
+.product-art{
+  height:190px;display:grid;place-items:center;
+  background:radial-gradient(circle,#51416e,#171a30 72%);
+  font-size:65px;color:#d8c6f5;
+}
+.product-info{padding:19px}
+.product-info small{color:#b9a0e4;text-transform:uppercase;letter-spacing:2px}
+.product-info h3{font-size:25px;margin:8px 0}
+.product-info p{color:var(--muted);min-height:65px}
+.buy{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.price{font-size:19px;color:#e3d2ff}
+.cart{
+  margin-top:55px;padding:25px;
+  border:1px solid #62517c;border-radius:18px;
+  background:#131326;
+}
+.cart h2{text-align:center;font-size:32px}
+.cart-row{
+  display:flex;justify-content:space-between;gap:12px;
+  align-items:center;padding:13px 0;
+  border-bottom:1px solid #403852;
+}
+.cart-row button{
+  background:transparent;color:#e6b7d6;border:0;
+  cursor:pointer;padding:8px;
+}
+.qty{width:65px;border-radius:8px}
+.total{text-align:right;font-size:22px;margin-top:20px}
+.checkout{margin-top:12px;font-size:16px}
+.empty{text-align:center;color:var(--muted);padding:20px}
+footer{
+  text-align:center;padding:30px;background:#070b16;
+  border-top:1px solid #55476d;color:#c9c2d8;
+}
+@media(max-width:600px){
+  .controls{flex-direction:column}
+  .controls input,.controls select{width:100%}
+  .cart-row{flex-wrap:wrap}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">☾</div>
+  <h1>The Wyrnmere Moon</h1>
+  <p>Intuition • Wisdom • Spiritual Discovery</p>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="services.html">Readings</a>
+  <a href="booking.html">Booking</a>
+  <a href="shop.html">Shop</a>
+</nav>
+
+<div class="hero">
+  <div class="moon">☾</div>
+  <h2>The Moonlit Shop</h2>
+  <p>Discover readings, ritual treasures and little pieces of magic.</p>
+</div>
+
+<main>
+  <h2>Explore Our Collection</h2>
+
+  <div class="controls">
+    <input id="search" type="search" placeholder="Search the moonlit shop...">
+    <select id="sort">
+      <option value="featured">Featured first</option>
+      <option value="low">Price: Low to High</option>
+      <option value="high">Price: High to Low</option>
+    </select>
+  </div>
+
+  <div class="categories" id="categories"></div>
+  <div class="grid" id="products"></div>
+
+  <section class="cart" id="cart">
+    <h2>Your Moonlit Bag 🛍️</h2>
+    <div id="cart-items"></div>
+    <div class="total" id="total">Subtotal: $0.00</div>
+    <button class="checkout" onclick="checkout()">Continue to Checkout</button>
+    <p id="checkout-message" class="empty"></p>
+  </section>
+</main>
+
+<footer>
+  <p>☾ The Wyrnmere Moon ☽</p>
+  <p>Intuition • Wisdom • Spiritual Discovery</p>
+  <p>© 2026 The Wyrnmere Moon. All rights reserved.</p>
+</footer>
+
+<script>
+const products = [
+  {id:"journal",name:"Moon Journal",category:"Ritual Tools",price:18,icon:"📖",description:"A beautiful space for moon notes, intentions, dreams and reflections.",featured:true},
+  {id:"tarot",name:"Intuitive Tarot Reading",category:"Readings",price:35,icon:"🔮",description:"A personal tarot reading exploring the questions and themes on your mind.",featured:true},
+  {id:"candle",name:"Moonlight Candle",category:"Ritual Tools",price:16,icon:"🕯️",description:"A candle for reflection, intention setting and your sacred space."},
+  {id:"oracle",name:"Oracle Card Reading",category:"Readings",price:28,icon:"🌙",description:"An oracle reading for reflection, perspective and clarity."},
+  {id:"palm",name:"Palm Reading",category:"Readings",price:30,icon:"✋",description:"A personalized palm reading exploring the lines and features of your hand."},
+  {id:"guidance",name:"Spiritual Guidance",category:"Readings",price:40,icon:"✨",description:"A supportive intuitive session for reflection and direction."}
+];
+
+let cart = [];
+try { cart = JSON.parse(localStorage.getItem("wyrnmere-moon-cart") || "[]"); }
+catch { cart = []; }
+
+let activeCategory = "All";
+
+const money = value => "$" + value.toFixed(2);
+
+function renderCategories(){
+  const categories = ["All",...new Set(products.map(p=>p.category))];
+  document.getElementById("categories").innerHTML = categories.map(c=>
+    `<button class="${activeCategory===c?'active':''}" onclick="setCategory('${c}')">${c}</button>`
+  ).join("");
+}
+
+function setCategory(category){
+  activeCategory = category;
+  renderCategories();
+  renderProducts();
+}
+
+function renderProducts(){
+  const search = document.getElementById("search").value.toLowerCase();
+  const sort = document.getElementById("sort").value;
+
+  let shown = products.filter(p=>
+    (activeCategory==="All" || p.category===activeCategory) &&
+    (p.name+" "+p.description+" "+p.category).toLowerCase().includes(search)
+  );
+
+  if(sort==="low") shown.sort((a,b)=>a.price-b.price);
+  if(sort==="high") shown.sort((a,b)=>b.price-a.price);
+  if(sort==="featured") shown.sort((a,b)=>Number(!!b.featured)-Number(!!a.featured));
+
+  document.getElementById("products").innerHTML = shown.length
+    ? shown.map(p=>`
+      <article class="product">
+        <div class="product-art">${p.icon}</div>
+        <div class="product-info">
+          <small>${p.category}</small>
+          <h3>${p.name}</h3>
+          <p>${p.description}</p>
+          <div class="buy">
+            <strong class="price">${money(p.price)}</strong>
+            <button class="add" onclick="addToCart('${p.id}')">Add to Bag</button>
+          </div>
+        </div>
+      </article>
+    `).join("")
+    : '<p class="empty">No treasures found. Try another search.</p>';
+}
+
+function saveCart(){
+  localStorage.setItem("wyrnmere-moon-cart",JSON.stringify(cart));
+  renderCart();
+}
+
+function addToCart(id){
+  const existing = cart.find(item=>item.id===id);
+  if(existing) existing.quantity++;
+  else cart.push({id,quantity:1});
+  saveCart();
+}
+
+function changeQuantity(id,amount){
+  const item=cart.find(p=>p.id===id);
+  if(!item)return;
+  item.quantity=Math.max(1,Math.min(99,item.quantity+amount));
+  saveCart();
+}
+
+function removeItem(id){
+  cart=cart.filter(p=>p.id!==id);
+  saveCart();
+}
+
+function renderCart(){
+  const container=document.getElementById("cart-items");
+  if(!cart.length){
+    container.innerHTML='<p class="empty">Your bag is waiting for a little magic.</p>';
+  }else{
+    container.innerHTML=cart.map(item=>{
+      const product=products.find(p=>p.id===item.id);
+      if(!product)return "";
+      return `<div class="cart-row">
+        <span>${product.name}</span>
+        <span>${money(product.price*item.quantity)}</span>
+        <button onclick="changeQuantity('${item.id}',-1)">−</button>
+        <span>${item.quantity}</span>
+        <button onclick="changeQuantity('${item.id}',1)">+</button>
+        <button onclick="removeItem('${item.id}')">Remove</button>
+      </div>`;
+    }).join("");
+  }
+  const subtotal=cart.reduce((sum,item)=>{
+    const p=products.find(product=>product.id===item.id);
+    return sum+(p?p.price*item.quantity:0);
+  },0);
+  document.getElementById("total").textContent="Subtotal: "+money(subtotal);
+}
+
+function checkout(){
+  document.getElementById("checkout-message").textContent =
+    "Secure checkout is coming soon. Online payment processing must be connected before orders can be placed.";
+}
+
+document.getElementById("search").addEventListener("input",renderProducts);
+document.getElementById("sort").addEventListener("change",renderProducts);
+
+renderCategories();
+renderProducts();
+renderCart();
+</script>
+</body>
+</html>
+
