@@ -267,8 +267,47 @@ function renderCart(){
 }
 
 function checkout(){
-  document.getElementById("checkout-message").textContent =
-    "Secure checkout is coming soon. Online payment processing must be connected before orders can be placed.";
+ 
+async function checkout() {
+  const message = document.getElementById("checkout-message");
+  const button = document.querySelector(".checkout");
+
+  if (!cart.length) {
+    message.textContent = "Your shopping bag is empty.";
+    return;
+  }
+
+  button.disabled = true;
+  button.textContent = "Connecting to secure checkout...";
+  message.textContent = "";
+
+  try {
+    const response = await fetch(
+      "https://wyrnmere-stripe-checkout.shashirawyrnmere.workers.dev",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ cart })
+      }
+    );
+
+    const result = await response.json();
+
+    if (!response.ok || !result.url) {
+      throw new Error(result.error || "Checkout could not start.");
+    }
+
+    window.location.href = result.url;
+
+  } catch (error) {
+    message.textContent = error.message;
+    button.disabled = false;
+    button.textContent = "Continue to Checkout";
+  }
+}
+
 }
 
 document.getElementById("search").addEventListener("input",renderProducts);
