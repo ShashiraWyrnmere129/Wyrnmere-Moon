@@ -37,13 +37,20 @@ header {
   background: linear-gradient(120deg, #e4e5ed, #aeb8d1, #e9e8f0);
   color: #18223b;
   text-align: center;
-  padding: 35px 20px;
+  padding: 25px 20px;
 }
 
 .logo {
-  font-size: 54px;
-  color: #65439a;
-  margin-bottom: 5px;
+  margin-bottom: 12px;
+}
+
+.logo img {
+  width: 115px;
+  height: 115px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #d9dce8;
+  box-shadow: 0 0 18px #65439a, 0 0 35px #a58bd0;
 }
 
 header h1 {
@@ -82,17 +89,21 @@ nav a:hover {
 
 .hero {
   min-height: 470px;
-  padding: 100px 20px;
+  padding: 75px 20px;
   text-align: center;
   background:
     radial-gradient(ellipse at top, #57447e 0%, transparent 55%),
     linear-gradient(145deg, #10182c, #202d4d 60%, #30214d);
 }
 
-.hero .moon {
-  font-size: 65px;
-  color: var(--silver-light);
-  text-shadow: 0 0 25px #d9dce8;
+.hero-logo {
+  width: 145px;
+  height: 145px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #d9dce8;
+  box-shadow: 0 0 20px #a58bd0, 0 0 40px #65439a;
+  margin-bottom: 15px;
 }
 
 .hero h2 {
@@ -201,7 +212,11 @@ footer p { margin: 5px; }
 @media(max-width: 600px) {
   nav { gap: 3px; }
   nav a { padding: 8px; font-size: 14px; }
-  .hero { padding: 75px 18px; }
+  .hero { padding: 65px 18px; }
+  .hero-logo {
+    width: 120px;
+    height: 120px;
+  }
 }
 </style>
 </head>
@@ -209,11 +224,13 @@ footer p { margin: 5px; }
 <body>
 
 <header>
-  <div class="logo">☾</div>
+  <div class="logo">
+    <img src="/file_000000007c7081f586b06b1bce25dc72_copy_448x448.png"
+         alt="The Wyrnmere Moon Logo">
+  </div>
   <h1>The Wyrnmere Moon</h1>
   <p>Intuition • Wisdom • Spiritual Discovery</p>
 </header>
-
 
 <nav>
   <a href="index.html">Home</a>
@@ -223,15 +240,20 @@ footer p { margin: 5px; }
   <a href="shop.html">Shop</a>
 </nav>
 
-
 <main>
+
   <div class="hero">
-    <div class="moon">☾</div>
+    <img class="hero-logo"
+         src="/file_000000007c7081f586b06b1bce25dc72_copy_448x448.png"
+         alt="The Wyrnmere Moon">
+
     <h2>Find Your Light in the Moonlight</h2>
+
     <p>
       A sanctuary for spiritual exploration, intuitive insight,
       and discovering the wisdom already within you.
     </p>
+
     <a class="button" href="services.html">Explore Our Readings</a>
   </div>
 
@@ -247,7 +269,9 @@ footer p { margin: 5px; }
 
   <section>
     <h2>Explore Your Path</h2>
+
     <div class="cards">
+
       <div class="card">
         <div class="symbol">✧</div>
         <h3>Tarot Readings</h3>
@@ -271,6 +295,7 @@ footer p { margin: 5px; }
         <h3>Spiritual Guidance</h3>
         <p>A welcoming space for reflection, self-discovery, and personal growth.</p>
       </div>
+
     </div>
   </section>
 
@@ -280,6 +305,7 @@ footer p { margin: 5px; }
     <br>
     <a class="button" href="booking.html">Explore Booking</a>
   </div>
+
 </main>
 
 <footer>
